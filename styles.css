@@ -1,0 +1,152 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+header nav {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+/* Hero Section */
+#hero {
+    background: #f4f4f4;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#hero h2 {
+    margin-bottom: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Pricing Plans */
+#plans {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.plan {
+    display: inline-block;
+    width: 30%;
+    margin: 0 1%;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.plan h3 {
+    margin-top: 0;
+}
+
+.plan ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Features Section */
+#features ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+#features ul li {
+    padding: 0.5rem 0;
+}
+
+/* Contact Form */
+#contact form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#contact input, #contact textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#contact button {
+    width: 100%;
+    padding: 0.5rem;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Chat Support Button Styling */
+#chat-support {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#chat-support:hover {
+    transform: scale(1.1);
+}
+
+#chat-support img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
