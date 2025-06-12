@@ -1,3 +1,42 @@
+// Google Apps Script to handle form submission and send emails
+function doPost(e) {
+  try {
+    // Parse the incoming JSON request
+    const data = JSON.parse(e.postData.contents);
+
+    // Extract form details
+    const name = data.name;
+    const email = data.email;
+    const message = data.message;
+
+    // Your Gmail address
+    const recipient = "linuxfun.report@gmail.com";
+
+    // Email subject and body
+    const subject = `New Contact Form Submission from ${name}`;
+    const body = `
+      You have received a new message from the contact form:
+      
+      Name: ${name}
+      Email: ${email}
+      Message: ${message}
+    `;
+
+    // Send email
+    GmailApp.sendEmail(recipient, subject, body);
+
+    // Return success response
+    return ContentService.createTextOutput(
+      JSON.stringify({ success: true })
+    ).setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    // Handle errors
+    return ContentService.createTextOutput(
+      JSON.stringify({ success: false, error: error.message })
+    ).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
 // Select the contact form
 const contactForm = document.getElementById('contactForm');
 
@@ -13,8 +52,8 @@ contactForm.addEventListener('submit', async function(event) {
     };
 
     try {
-        // Send the form data to the backend server
-        const response = await fetch('https://your-backend-endpoint.com/contact', {
+        // Send the form data to the Google Apps Script backend
+        const response = await fetch('https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,11 +62,17 @@ contactForm.addEventListener('submit', async function(event) {
         });
 
         if (response.ok) {
-            // Show success message
-            alert('Thank you for contacting us! Your message has been sent.');
-            contactForm.reset(); // Clear the form
+            const result = await response.json();
+            if (result.success) {
+                // Show success message
+                alert('Thank you for contacting us! Your message has been sent.');
+                contactForm.reset(); // Clear the form
+            } else {
+                // Handle server-side errors
+                alert('Oops! Something went wrong. Please try again later.');
+            }
         } else {
-            // Handle errors
+            // Handle HTTP errors
             alert('Oops! Something went wrong. Please try again later.');
         }
     } catch (error) {
